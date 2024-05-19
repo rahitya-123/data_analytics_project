@@ -26,23 +26,23 @@ zip_ref.close() #close file
 #read data from the file and handle null values
 import pandas as pd
 df=pd.read_csv('orders.csv',na_values=['Not Available','unknown'])
-#df.head(20)
+df.head(20)
 df['Ship Mode'].unique()
 
 # In[33]:
 
 #rename column names ,make them lowercase and replace space with underscore
-#df
-#df.rename(columns={'Order Id':'order_id','City':'city'}) #this is not a good practice to rename each and every column
-#df.columns=df.columns.str.lower()
-#df.columns=df.columns.str.replace(' ','_')
-#df.head(5)
+df
+df.rename(columns={'Order Id':'order_id','City':'city'}) #this is not a good practice to rename each and every column
+df.columns=df.columns.str.lower()
+df.columns=df.columns.str.replace(' ','_')
+df.head(5)
 
 # In[25]:
 
 #derive new columns discount,sale price and profit
-#df['discount']=df['list_price']*df['discount_percent']*0.01
-#df['sale_price']=df['list_price']-df['discount']
+df['discount']=df['list_price']*df['discount_percent']*0.01
+df['sale_price']=df['list_price']-df['discount']
 df['profit']=df['sale_price']-df['cost_price']
 df.head(5)
 
